@@ -3,6 +3,7 @@ package com.Ecommerce.user.util;
 import java.util.Date;
 import javax.crypto.SecretKey;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -17,7 +18,7 @@ public class JwtUtil {
 	private final SecretKey key;
 	private final long jwtExpirationMs;
 	
-	public JwtUtil(String Secret,long jwtExpirationMs) {
+	public JwtUtil(@Value("${app.jwt.secret}") String Secret, @Value("${app.jwt.expiration-ms}") long jwtExpirationMs) {
 		
 		this.key=Keys.hmacShaKeyFor(Secret.getBytes());
 		this.jwtExpirationMs=jwtExpirationMs;
