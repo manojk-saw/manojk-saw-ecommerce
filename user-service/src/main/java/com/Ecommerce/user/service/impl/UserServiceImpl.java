@@ -1,5 +1,6 @@
 package com.Ecommerce.user.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +19,17 @@ import com.Ecommerce.user.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 	
+	@Autowired
 	private UserRepository userRepo;
+	@Autowired
 	private UserMapper userMapper;
+	@Autowired
 	private PasswordEncoder passwordEncoder;
+	@Autowired
 	private JwtUtil jwtUtil;
+	@Autowired
 	private AuthMapper authMapper;
 
 	@Override
@@ -47,7 +52,9 @@ public class UserServiceImpl implements UserService{
 		
 	User user=userRepo.findByEmail(loginDto.getEmail()).orElseThrow(()->new ResourceNotFoundException("Email not found"));
 	
-	Boolean matches=passwordEncoder.matches(loginDto.getPassword(),user.getEmail());
+	System.out.println(" stored password is: "+user.getPassword()+" incoming pass is: "+loginDto.getPassword());
+	
+	Boolean matches=passwordEncoder.matches(loginDto.getPassword(),user.getPassword());
 	
 	if(!matches) {
 		throw new ResourceNotFoundException("wrong password");
