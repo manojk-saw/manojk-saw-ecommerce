@@ -1,6 +1,5 @@
 package com.Ecommerce.product.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.Ecommerce.product.dto.ProductDto;
@@ -10,10 +9,8 @@ import com.Ecommerce.product.entity.Product;
 @Component
 public class ProductMapper {
 	
-	@Autowired
-	private Category category;
 	
-	public Product toEntity(ProductDto dto) {
+	public Product toEntity(ProductDto dto,Category category) {
 		
 		return Product.builder()
 		.name(dto.getName())
