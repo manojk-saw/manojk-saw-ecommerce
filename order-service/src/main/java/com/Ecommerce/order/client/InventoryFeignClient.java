@@ -10,7 +10,8 @@ import com.Ecommerce.order.dto.InventoryResponse;
 public interface InventoryFeignClient {
 	
 	@GetMapping("/api/inventory/{skuCode}")
-	 InventoryResponse isInStock(@PathVariable String skuCode);
+	 InventoryResponse stockCheck(@PathVariable("skuCode") String skuCode);
+	
 	
 
 }
