@@ -1,9 +1,12 @@
 package com.Ecommerce.inventory.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.Ecommerce.inventory.dto.InventoryRequest;
 import com.Ecommerce.inventory.dto.InventoryResponse;
 import com.Ecommerce.inventory.entity.Inventory;
 
+@Component
 public class InventoryRequestMapper {
 	
 	

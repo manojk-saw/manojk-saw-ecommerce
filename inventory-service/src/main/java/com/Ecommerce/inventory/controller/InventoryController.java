@@ -22,7 +22,7 @@ public class InventoryController {
 		private final InventoryService inventoryService;
 		
 		@GetMapping("/{skuCode}")
-		public ResponseEntity<InventoryResponse> isInStock(@PathVariable String skuCode){
+		public ResponseEntity<InventoryResponse> isInStock(@PathVariable("skuCode") String skuCode){
 			return ResponseEntity.ok(inventoryService.checkInventory(skuCode));
 		}
 		@PostMapping
