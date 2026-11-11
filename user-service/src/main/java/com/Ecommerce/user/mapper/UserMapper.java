@@ -24,7 +24,7 @@ public class UserMapper {
 		.email(dto.getEmail())
 		.phone(dto.getPhone())
 		.password(passwordEncoder.encode(dto.getPassword()))
-		.roles("USER_ROLE").build();
+		.roles("ROLE_"+dto.getRoles()).build();
 	
 	}
 	

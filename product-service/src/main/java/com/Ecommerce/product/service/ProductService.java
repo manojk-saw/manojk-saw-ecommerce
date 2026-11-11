@@ -1,9 +1,10 @@
 package com.Ecommerce.product.service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 
 import com.Ecommerce.product.dto.ProductDto;
-
+@Service
 public interface ProductService {
 
 	ProductDto createProduct(ProductDto dto);

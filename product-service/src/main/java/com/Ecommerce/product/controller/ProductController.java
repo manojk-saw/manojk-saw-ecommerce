@@ -17,7 +17,6 @@ import com.Ecommerce.product.service.ProductService;
 
 @RestController
 @RequestMapping("/api/products")
-
 public class ProductController {
 	
 	@Autowired
@@ -67,8 +66,8 @@ public class ProductController {
 	}
 	
 	public ResponseEntity<Page<ProductDto>> filterProducts(@RequestParam(required=false) Long categoryId,
-			@RequestParam(required=false)double minPrice,
-			@RequestParam(required=false) double maxPrice,
+			@RequestParam(required=false)Double minPrice,
+			@RequestParam(required=false) Double maxPrice,
 			@RequestParam(defaultValue="0")int page,
 			@RequestParam(defaultValue="10")int size){
 		

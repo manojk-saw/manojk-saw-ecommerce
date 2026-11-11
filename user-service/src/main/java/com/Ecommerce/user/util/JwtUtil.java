@@ -34,7 +34,7 @@ public class JwtUtil {
 		.claim(email, email)
 		.claim(role, role)
 		.issuedAt(new Date(now))
-		.expiration(new Date(jwtExpirationMs))
+		.expiration(new Date(now+jwtExpirationMs))
 		.signWith(key).compact();	
 	}
 	

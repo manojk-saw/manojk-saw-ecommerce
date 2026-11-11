@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.1.2</version>
+		<version>4.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Ecommerce</groupId>
@@ -44,13 +44,21 @@
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 		
-		<!-- 
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
+		    <groupId>io.micrometer</groupId>
+		    <artifactId>micrometer-tracing</artifactId>
 		</dependency>
 		
-		-->
+		<dependency>
+		     <groupId>io.micrometer</groupId>
+		     <artifactId>micrometer-tracing-bridge-brave</artifactId>
+		</dependency>
+		
+		<dependency>
+              <groupId>io.zipkin.reporter2</groupId>
+              <artifactId>zipkin-reporter-brave</artifactId>
+        </dependency>
+		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -107,8 +115,8 @@
 			<artifactId>jjwt-jackson</artifactId>
           <version>0.12.6</version>
 		</dependency>
-		
 	</dependencies>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
