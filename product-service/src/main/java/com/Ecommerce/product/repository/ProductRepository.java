@@ -14,12 +14,12 @@ public interface ProductRepository extends JpaRepository<Product,Long>{
 	
 	Page<Product> findByCategory(Long categoryId,Pageable pageable);
 	Page<Product> findByPriceBetween(Double min, Double max,Pageable pageable);
-	Page<Product> findByNameContaingIgnoreCase(String keyword,Pageable pageable);
+	Page<Product> findByNameContainingIgnoreCase(String keyword,Pageable pageable);
 	
 	
 	@Query("SELECT p FROM Product p "+
 	"WHERE LOWER(p.name) LIKE LOWER(CONCAT('%',:keyword, '%')) "+
-			"OR WHERE LOWER(P.description) LIKE LOWER(CONCAT('%',:keyword,'%'))")
+			"OR LOWER(p.description) LIKE LOWER(CONCAT('%',:keyword,'%'))")
 	Page<Product> searchProducts(@Param("keyword") String keyword, Pageable pageable);
 	
 	

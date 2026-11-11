@@ -24,5 +24,6 @@ public class UserCreateRequestDto {
 	@Size(min=6,message="Password must be atleast 6 characters")
 	private String password;
 	private String phone;
+	private String roles;
 
 }

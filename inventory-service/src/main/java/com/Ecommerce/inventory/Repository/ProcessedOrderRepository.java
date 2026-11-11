@@ -8,6 +8,6 @@ import com.Ecommerce.inventory.entity.ProcessedOrder;
 
 public interface ProcessedOrderRepository extends JpaRepository<ProcessedOrder,Long>{
 	
-	Optional<ProcessedOrder> existsByOrderId(String orderId);
+	boolean existsByOrderId(String orderId);
 
 }

@@ -1,0 +1,33 @@
+server:
+  port: 8085
+  
+spring:
+  kafka:
+    bootstrap-server: localhost:9092
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: earliest
+      key-deserializer:
+         org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.package: "*"    
+  
+  mail:
+     host: smtp.gmail.com
+     port: 587
+     username: manojkumarsaw949@gmail.com
+     password: xvbq dwid begf rheb
+     properties:
+        mail:
+           smtp:
+              auth: true
+              starttls:
+                  enable: true
+                  
+                 
+twilio:
+  account-sid: AC275ec724485ddf767ec504f408f
+  auth-token: 34a0c2bc7fb179e7df6d4bb654f
+  from-number: +175654543234                 
+                  

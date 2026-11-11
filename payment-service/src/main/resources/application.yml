@@ -1,0 +1,4 @@
+razorpay:
+  key: thisiskey89875
+  secret: thisisSecretkey12345
+  webhook-secret: xxxxxx
