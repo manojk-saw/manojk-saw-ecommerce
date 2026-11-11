@@ -6,18 +6,18 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
-//import com.Ecommerce.gateway.security.JwtGatewayFilter;
+import com.Ecommerce.gateway.security.JwtGatewayFilter;
 
 import reactor.core.publisher.Mono;
 
 @Component
 public class CustomRouteFilter extends AbstractGatewayFilterFactory<Object> {
 	
-//	 private final JwtGatewayFilter jwtGatewayFilter;
+	 private final JwtGatewayFilter jwtGatewayFilter;
 
-	    public CustomRouteFilter() {
+	    public CustomRouteFilter(JwtGatewayFilter jwtGatewayFilter) {
 	        super(Object.class);
-//	        this.jwtGatewayFilter = jwtGatewayFilter;
+	        this.jwtGatewayFilter = jwtGatewayFilter;
 	    }
 
 	@Override
@@ -31,13 +31,14 @@ public class CustomRouteFilter extends AbstractGatewayFilterFactory<Object> {
                     .mutate()
                     .header("X-Route-Header", "Added by Gateway")
                     .build();
+            
+      ServerWebExchange modifiedExchange=  exchange
+    		  .mutate().request(modifiedRequest).build();
 
-         return  chain.filter(exchange.mutate()
-                    .request(modifiedRequest)
-                    .build())
-                    .then(Mono.fromRunnable(() -> {
-                        System.out.println("Route Filter: After routing");
-                    }));
+      return jwtGatewayFilter.filter(modifiedExchange, chain)
+              .then(Mono.fromRunnable(() -> {
+                  System.out.println("Route Filter: After routing");
+              }));
         };
 	}
 
